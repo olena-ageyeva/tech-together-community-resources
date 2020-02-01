@@ -1,7 +1,6 @@
 
-import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import React, {Component} from "react";
+
 import ForWomen from "./ForWomen";
 
 import { Router, Route, Switch } from 'react-router-dom'
@@ -27,7 +26,7 @@ export default class App extends Component {
                 <Route path='/provider/:id/details' component={ ProviderDetails }/>
                 <Route path='/provider/registration' component={ ProviderRegistration }/>
                 <Route path='/provider/:id/information' component={ ProviderInformation }/>
-                <Route path='/women' component={ Women }/>
+                <Route path='/women' component={ ForWomen }/>
           </Switch>
         </Router>
       </div>

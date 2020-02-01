@@ -15,6 +15,7 @@ export default class ProviderScreen extends Component {
     return (
       <div className='provider-screen' onSubmit={ () => history.push('/provider/1/details') }>
         <h1>Provider Portal</h1>
+        <h3>Please login or register to access the WSP Portal</h3>
         <Form className='provider-screen__login-form'>
           <Form.Field>
             <label>Username</label>

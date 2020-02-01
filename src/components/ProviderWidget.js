@@ -37,7 +37,7 @@ export default class ProviderWidget extends Component {
     return (
       <div className='provider-widget'>
         <Card
-          image='https://ae01.alicdn.com/kf/HTB1EMsmB49YBuNjy0Ffq6xIsVXaO/Young-Cat-Takes-Pictures-of-Cute-Cat-Yellow-Circle-Pet-Sunflower-Cat-Headgear-Pet-Clothes-Cat.jpg_q50.jpg'
+          image='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfoFVkWUnGBCb2pIw2aOMAFFWoczy-q1ssUUHtoAqa0vlZJl7NKg&s'
           header={ name }
           meta={ type }
           description={ description }
