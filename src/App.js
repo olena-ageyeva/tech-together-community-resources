@@ -1,4 +1,9 @@
-import React, { Component } from 'react'
+
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import ForWomen from "./ForWomen";
+
 import { Router, Route, Switch } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
 import NavBar from './components/NavBar'
@@ -29,3 +34,4 @@ export default class App extends Component {
     )
   }
 }
+
