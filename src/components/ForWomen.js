@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Row } from "react-bootstrap";
 import Collapse from "react-bootstrap/Collapse";
 import Filter from "./Filter";
 import SearchResult from "./SearchResult";
 import Map from "./Map";
+import { providerDatabase } from "../data/providerDatabase";
 
 const ForWomenStyled = styled.label`
   .ForWomen {
@@ -27,8 +28,6 @@ const ForWomenStyled = styled.label`
   }
 `;
 
-const view = "search";
-const selectedProvider = null;
 const style = {
   padding: 0,
   width: "400px",
@@ -37,19 +36,32 @@ const style = {
   margin: "5px"
 };
 
+
+
 export default function ForWomen() {
+  const [activeProvider, setActiveProvider] = useState(providerDatabase[0]);
+
+function onChange(name) {
+  setActiveProvider(
+    providerDatabase.filter(provider => provider.name === name)[0]
+  );
+}
   return (
     <ForWomenStyled>
       <div className="ForWomen">
         <h1>Women Support Portal</h1> <br />
-        <span><a>Sign Up</a></span>
-        <span><a>Log In</a></span>
-        <Row style={{ width: "100%", height: "100%" }}>          
+        <span>
+          <a>Sign Up</a>
+        </span>
+        <span>
+          <a>Log In</a>
+        </span>
+        <Row style={{ width: "100%", height: "100%" }}>
           <div style={{ ...style }}>
-            <Filter></Filter>
-          </div>         
+            <Filter provider={activeProvider} onChange={onChange}></Filter>
+          </div>
           <div style={{ ...style, width: "calc(100% - 420px)" }}>
-            <Map></Map>
+            <Map provider={activeProvider}></Map>
           </div>
         </Row>
       </div>

@@ -98,7 +98,7 @@ const FilterStyled = styled.label`
   }
 `;
 
-export default function Filter() {
+export default function Filter({activeProvider, onChange}) {
   const [search, setSearch] = useState("");
   const [filteredResult, setFilteredResult] = useState(providerDatabase);
   const [providerSelected, setProviderSelected] = useState(null);
@@ -116,6 +116,7 @@ export default function Filter() {
     [search]
   );
 
+
   const onClick = useCallback(
     name => {
       console.log(
@@ -125,6 +126,7 @@ export default function Filter() {
 
       );
       setProviderSelected(providerDatabase.filter(provider=>provider.name===name)[0]);
+      onChange(name)
       
     },
     [providerSelected]
@@ -146,8 +148,7 @@ export default function Filter() {
     }
   }, [search]);
 
-  const onSubmit = () => {};
-  const onChange = () => {};
+  
   return (
     <FilterStyled>
       <form className="input-form" onSubmit={ev => {}}>
