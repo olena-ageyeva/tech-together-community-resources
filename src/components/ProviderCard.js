@@ -60,7 +60,7 @@ const ProviderCardStyled = styled.label`
 export default function ProviderCard({ provider, onClick }) {
   return (
     <ProviderCardStyled>
-      <div className="provider-card" key={provider.name}>
+      <div className="provider-card" key={provider.name} onClick={()=>onClick(provider.name)}>
         <div className="card-text">
           <div className="card-title">{provider.name}</div>
           <div className="card-description">{provider.description}</div>
@@ -73,7 +73,7 @@ export default function ProviderCard({ provider, onClick }) {
               jstcache="261"
               src="//www.gstatic.com/images/icons/material/system_gm/2x/public_gm_blue_20dp.png"
               className="section-result-action-icon"
-              onClick={onClick}
+              onClick={()=>onClick(provider.name)}
             />
           </div>
           <div className="action-text">
@@ -87,7 +87,7 @@ export default function ProviderCard({ provider, onClick }) {
               jstcache="261"
               src="//www.gstatic.com/images/icons/material/system/2x/directions_googblue_20dp.png"
               className="section-result-action-icon"
-              onClick={onClick}
+              onClick={(e)=>onClick(provider.name)}
             />
           </div>
           <div className="action-text">

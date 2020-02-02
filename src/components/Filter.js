@@ -116,9 +116,19 @@ export default function Filter() {
     [search]
   );
 
-  const onClick = useCallback(() => {
-    setProviderSelected("Hello!");
-  }, [providerSelected]);
+  const onClick = useCallback(
+    name => {
+      console.log(
+        "provider selected",
+        providerDatabase.filter(provider => provider.name === name)[0],
+     name
+
+      );
+      setProviderSelected(providerDatabase.filter(provider=>provider.name===name)[0]);
+      
+    },
+    [providerSelected]
+  );
 
   useEffect(() => {
     setFilteredResult(providerDatabase);
@@ -177,13 +187,17 @@ export default function Filter() {
         autoHideTimeout={1000}
         autoHideDuration={200}
       >
-        {providerSelected && <ProviderInfo></ProviderInfo>}
+        {providerSelected && (
+          <ProviderInfo provider={providerSelected}></ProviderInfo>
+        )}
+       
         <div className="results">
           {filteredResult
             ? filteredResult.map(provider => (
                 <ProviderCard
                   provider={provider}
                   onClick={onClick}
+                  name={provider.name}
                 ></ProviderCard>
               ))
             : ""}
