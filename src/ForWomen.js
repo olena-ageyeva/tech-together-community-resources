@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import {Row} from "react-bootstrap";
+import { Row } from "react-bootstrap";
 import Collapse from "react-bootstrap/Collapse";
 import Filter from "./Filter";
 import SearchResult from "./SearchResult";
@@ -19,7 +19,6 @@ const ForWomenStyled = styled.label`
   }
   .row div {
     vertical-align: top;
-    text-align: left;
   }
   h1 {
     text-align: center;
@@ -37,39 +36,6 @@ const style = {
   margin: "5px"
 };
 
-const providerDatabase = [
-  {
-    name: "League of Women For Comm Services",
-    description: "Social services organization",
-    address: "558 Chester Square",
-    website: null
-  },
-  {
-    name: "Bedford Youth and Family Services",
-    description: "Social services organization",
-    address: "12 Mudge Way #1",
-    website: "https://www.bedfordma.gov/youth-family"
-  },
-  {
-    name: "Womens Action-New Direction",
-    description: "Women's Health Clinic",
-    address: "621 Massachusetts Ave #2",
-    website: null
-  },
-  {
-    name: "Womens Action-New Direction",
-    description: "Women's Health Clinic",
-    address: "621 Massachusetts Ave #2",
-    website: null
-  },
-  {
-    name: "Authentic Woman Counseling for Girls and Women",
-    description: "Family councelor",
-    address: "282 Massachusetts Ave",
-    website: "http://authenticwoman.net/"
-  }
-];
-
 export default function ForWomen() {
   return (
     <ForWomenStyled>
@@ -83,10 +49,10 @@ export default function ForWomen() {
             <Filter></Filter>
           </div>
           {/* </Collapse> */}
-          <div style={{ ...style, width: "calc(100% - 800px)" }}>
+          {/* <div style={{ ...style, width: "calc(100% - 800px)" }}>
             <SearchResult></SearchResult>
-          </div>
-          <div style={{ ...style, width: "350px" }}>
+          </div> */}
+          <div style={{ ...style, width: "calc(100% - 420px)" }}>
             <Map></Map>
           </div>
         </Row>
