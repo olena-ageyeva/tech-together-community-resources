@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Button, Form } from 'semantic-ui-react'
-import { states } from '../mockdata'
+import { states } from '../data/mockdata'
 import ProviderWidget from './ProviderWidget'
 import './ProviderRegistration.scss'
 

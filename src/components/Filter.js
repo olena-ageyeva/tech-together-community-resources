@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faTimes, faBars } from "@fortawesome/free-solid-svg-icons";
 import { Card, CardGroup } from "react-bootstrap";
-import { providerDatabase } from "./providerDatabase";
+import { providerDatabase } from "../data/providerDatabase";
 
 const FilterStyled = styled.label`
   .Filter {

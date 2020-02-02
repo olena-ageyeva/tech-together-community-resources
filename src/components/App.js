@@ -5,13 +5,13 @@ import ForWomen from "./ForWomen";
 
 import { Router, Route, Switch } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
-import NavBar from './components/NavBar'
-import Home from './components/Home'
-import ProviderScreen from './components/ProviderScreen'
-import ProviderDetails from './components/ProviderDetails'
-import ProviderInformation from './components/ProviderInformation'
-import ProviderRegistration from './components/ProviderRegistration'
-import Women from './components/Women'
+import NavBar from './NavBar'
+import Home from './Home'
+import ProviderScreen from './ProviderScreen'
+import ProviderDetails from './ProviderDetails'
+import ProviderInformation from './ProviderInformation'
+import ProviderRegistration from './ProviderRegistration'
+import Women from './Women'
 
 export const history = createBrowserHistory()
 export default class App extends Component {

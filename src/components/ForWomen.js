@@ -43,15 +43,10 @@ export default function ForWomen() {
         <h1>Women Support Portal</h1> <br />
         <span>Sign Up</span>
         <span>Log In</span>
-        <Row style={{ height: "550px", width: "100%" }}>
-          {/* <Collapse in={view === "search"} dimension="width" timeout={0}> */}
+        <Row style={{ height: "550px", width: "100%" }}>          
           <div style={{ ...style }}>
             <Filter></Filter>
-          </div>
-          {/* </Collapse> */}
-          {/* <div style={{ ...style, width: "calc(100% - 800px)" }}>
-            <SearchResult></SearchResult>
-          </div> */}
+          </div>         
           <div style={{ ...style, width: "calc(100% - 420px)" }}>
             <Map></Map>
           </div>
