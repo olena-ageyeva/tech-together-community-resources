@@ -4,7 +4,7 @@ import { states } from "../data/mockdata";
 import ProviderWidget from "./ProviderWidget";
 import "./ProviderRegistration.scss";
 
-export default class ProviderRegistration extends Component {
+export default class Login extends Component {
   state = {
     name: "",
     username: "",
@@ -16,7 +16,7 @@ export default class ProviderRegistration extends Component {
     description: "",
     zipcode: "",
     img:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfoFVkWUnGBCb2pIw2aOMAFFWoczy-q1ssUUHtoAqa0vlZJl7NKg&s"
+      "https://image.shutterstock.com/image-vector/person-gray-photo-placeholder-woman-260nw-1406263805.jpg"
   };
 
   render() {
@@ -24,22 +24,22 @@ export default class ProviderRegistration extends Component {
     return (
       <div className="provider-registration">
         <div className="provider-registration__form">
-          <h1>Register as a Provider</h1>
+          <h1>WSP Registration Page </h1>
           <Form>
             <Form.Input
               onChange={e => this.setState({ name: e.target.value })}
               label="Name"
-              placeholder="Name"
+              placeholder="What's your name?"
             />
             <Form.Input
               onChange={e => this.setState({ username: e.target.value })}
               label="Username"
-              placeholder="Username"
+              placeholder="How would you like to appear on our portal?"
             />
             <Form.Input
               onChange={e => this.setState({ password: e.target.value })}
               label="Password"
-              placeholder="Password"
+              placeholder="Please enter your number"
               type="password"
             />
             <Form.Input
@@ -71,13 +71,13 @@ export default class ProviderRegistration extends Component {
             />
             <Form.Input
               onChange={e => this.setState({ type: e.target.value })}
-              label="Type of Service"
-              placeholder="Type of Service"
+              label="Your story"
+              placeholder="Please describe your problems here"
             />
             <Form.TextArea
               onChange={e => this.setState({ description: e.target.value })}
-              label="Description"
-              placeholder="Tell us more about the services you offer"
+              label="Help needed"
+              placeholder="What services you think would be helpful for you now?"
             />
           </Form>
           <Button

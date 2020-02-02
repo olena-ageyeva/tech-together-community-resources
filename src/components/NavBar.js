@@ -17,6 +17,15 @@ export default class NavBar extends Component {
         title: 'WOMEN',
         route: '/women'
       },
+      {
+        title: 'FAQ',
+        route: '/faq'
+
+      },
+      {
+        title: 'Log in',
+        route: '/login'
+      }
     ].map(o => {
       return (
         <div className='navbar__options' onClick={ () => history.push(o.route) }>
