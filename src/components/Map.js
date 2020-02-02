@@ -19,7 +19,6 @@ export default function Map() {
   return (
     <MapStyled>
       <div className="Map">
-        Map <br />
         <ReactBingmaps bingmapKey="AtbnIFGDAScY1_eRGwODY5MG27Ic2Vys75vD-MaY1ZpOwco-_PpfoxKu8E01odNk"></ReactBingmaps>
       </div>
     </MapStyled>

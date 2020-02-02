@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Scrollbars } from "react-custom-scrollbars";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faTimes, faBars } from "@fortawesome/free-solid-svg-icons";
 import { Card, CardGroup } from "react-bootstrap";
 import { providerDatabase } from "../data/providerDatabase";
+import ProviderCard from "./ProviderCard";
+import ProviderInfo from "./ProviderInfo";
 
 const FilterStyled = styled.label`
   .Filter {
@@ -88,81 +90,51 @@ const FilterStyled = styled.label`
     padding: 0;
     vertical-align: baseline;
   }
-  .provider-card {
-    min-height: 112px;
-    width: 100%;
-    box-sizing: border-box;
-    border-bottom: 1px solid #e6e6e6;
-    padding: 10px 18px 10px 24px;
+  input[type="text"] {
+    float: left;
   }
   div {
     display: block;
   }
-
-  .card-text {
-    color: #70757a;
-    display: inline-block;
-    font-size: 13px;
-    line-height: 16px;
-    min-width: 1px;
-    -webkit-flex: 1;
-    -ms-flex: 1;
-    flex: 1;
-    width: 55%;
-  }
-
-  .card-title {
-    font-family: Roboto, Arial, sans-serif;
-    font-size: 15px;
-    color: black;
-    font-weight: bold;
-  }
-  .card-action {
-    width: 18%;
-    margin: 5px 5px 5px 10px;
-    text-align: center;
-  }
-  input[type="text"] {
-    float: left;
-  }
-
-  .action-image {
-    -webkit-align-items: center;
-    -ms-flex-align: center;
-    align-items: center;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    -ms-flex-pack: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    display: flex;
-    border: 1px solid #bdc1c6;
-    border-radius: 36px;
-    height: 36px;
-    width: 36px;
-    margin: 5px auto;
-  }
-
-  img {
-    height: 20px;
-    width: 20px;
-  }
 `;
 
 export default function Filter() {
-  const [search, setSearch] = useState();
+  const [search, setSearch] = useState("");
   const [filteredResult, setFilteredResult] = useState(providerDatabase);
+  const [providerSelected, setProviderSelected] = useState(null);
 
-  console.log("filter", providerDatabase, search, filteredResult);
+  //console.log("filter", providerDatabase, search, filteredResult);
 
-  function applyFilter(e) {
-    if (e.key === "Enter") {
-      console.log("apply filter", search);
-      search.length > 3
-        ? setFilteredResult(providerDatabase)
-        : setFilteredResult(null);
+  const applyFilter = useCallback(
+    e => {
+      if (e.key === "Enter") {
+        setFilteredResult(
+          providerDatabase.filter(provider => provider.name.includes(search))
+        );
+      }
+    },
+    [search]
+  );
+
+  const onClick = useCallback(() => {
+    setProviderSelected("Hello!");
+  }, [providerSelected]);
+
+  useEffect(() => {
+    setFilteredResult(providerDatabase);
+  }, []);
+
+  useEffect(() => {
+    if (search.length >= 3) {
+      setFilteredResult(
+        providerDatabase.filter(provider =>
+          provider.name.toLowerCase().includes(search.toLowerCase())
+        )
+      );
+    } else {
+      setFilteredResult(providerDatabase);
     }
-  }
+  }, [search]);
 
   const onSubmit = () => {};
   const onChange = () => {};
@@ -176,7 +148,7 @@ export default function Filter() {
           <input
             type="text"
             onChange={e => setSearch(e.target.value)}
-            onKeyDown={() => setFilteredResult(providerDatabase)}
+            onKeyDown={e => applyFilter}
             value={search}
             placeholder="Start Searching for Help"
           />
@@ -186,6 +158,7 @@ export default function Filter() {
                 className="search-icon"
                 icon={faSearch}
                 size="lg"
+                onClick={e => applyFilter}
               />{" "}
             </button>
             <button>
@@ -198,45 +171,24 @@ export default function Filter() {
           </div>
         </div>
       </form>
-      <div className="results">
-        {filteredResult
-          ? filteredResult.map(provider => (
-              <div className="provider-card">
-                <div className="card-text">
-                  <div className="card-title">{provider.name}</div>
-                  <div className="card-description">{provider.description}</div>
-                  <div className="card-description">{provider.address}</div>
-                </div>
-                <div className="card-action">
-                  <div className="action-image">
-                    <img
-                      alt="Website"
-                      jstcache="261"
-                      src="//www.gstatic.com/images/icons/material/system_gm/2x/public_gm_blue_20dp.png"
-                      class="section-result-action-icon"
-                    />
-                  </div>
-                  <div className="action-text">
-                    <a>Website</a>
-                  </div>
-                </div>
-                <div className="card-action">
-                  <div className="action-image">
-                    <img
-                      alt="Website"
-                      jstcache="261"
-                      src="//www.gstatic.com/images/icons/material/system/2x/directions_googblue_20dp.png"
-                      class="section-result-action-icon"
-                    />
-                  </div>
-                  <div className="action-text">
-                    <a>Directions</a>
-                  </div>
-                </div>
-              </div>
-            ))
-          : ""}
-      </div>
+      <Scrollbars
+        style={{ width: "100%", height: "85%", padding: "0 28px" }}
+        autoHide
+        autoHideTimeout={1000}
+        autoHideDuration={200}
+      >
+        {providerSelected && <ProviderInfo></ProviderInfo>}
+        <div className="results">
+          {filteredResult
+            ? filteredResult.map(provider => (
+                <ProviderCard
+                  provider={provider}
+                  onClick={onClick}
+                ></ProviderCard>
+              ))
+            : ""}
+        </div>
+      </Scrollbars>
     </FilterStyled>
   );
 }

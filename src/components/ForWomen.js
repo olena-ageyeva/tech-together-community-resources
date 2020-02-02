@@ -9,6 +9,7 @@ import Map from "./Map";
 const ForWomenStyled = styled.label`
   .ForWomen {
     width: 100%;
+    height: 100%;
   }
   span {
     margin: 5px;
@@ -41,9 +42,9 @@ export default function ForWomen() {
     <ForWomenStyled>
       <div className="ForWomen">
         <h1>Women Support Portal</h1> <br />
-        <span>Sign Up</span>
-        <span>Log In</span>
-        <Row style={{ height: "550px", width: "100%" }}>          
+        <span><a>Sign Up</a></span>
+        <span><a>Log In</a></span>
+        <Row style={{ width: "100%", height: "100%" }}>          
           <div style={{ ...style }}>
             <Filter></Filter>
           </div>         
