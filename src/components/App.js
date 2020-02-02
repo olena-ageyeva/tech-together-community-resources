@@ -12,6 +12,9 @@ import ProviderInformation from "./ProviderInformation";
 import ProviderRegistration from "./ProviderRegistration";
 import Women from "./Women";
 import Login from "./Login";
+import WomenScreen from "./WomenScreen";
+import ReseacherScreen from "./ReseacherScreen";
+import ReseacherRegistration from "./ReseacherRegistration";
 
 export const history = createBrowserHistory();
 export default class App extends Component {
@@ -32,9 +35,14 @@ export default class App extends Component {
               path="/provider/:id/information"
               component={ProviderInformation}
             />
+            <Route path="/woman/registration" component={Login} />
+            <Route
+              path="/reseachers/registration"
+              component={ReseacherRegistration}
+            />
             <Route path="/women" component={ForWomen} />
-            <Route path="/faq" component={Home} />
-            <Route path="/login" component={Login} />
+            <Route path="/researchers" component={ReseacherScreen} />
+            <Route path="/login" component={WomenScreen} />
           </Switch>
         </Router>
       </div>

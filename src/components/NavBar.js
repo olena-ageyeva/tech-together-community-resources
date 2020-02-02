@@ -18,8 +18,8 @@ export default class NavBar extends Component {
         route: '/women'
       },
       {
-        title: 'FAQ',
-        route: '/faq'
+        title: 'RESEACHERS',
+        route: '/researchers'
 
       },
       {
